@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ZCheck {date}</title>
+    <style>
+        body { font-family: sans-serif; }
+        table#summary td { font-size: 14pt; padding: 0em 2em 0em 0em; }
+        table#results td { word-break: break-all; }
+        table#results { margin-top: 2em; }
+    </style>
+</head>
+<body>
+
+<h1>ZCheck {date} (test seed {seed})</h1>
+
+<table id="summary">
+    <tr>
+        <td>
+            Total Tests: {total}<br>
+            Total Passed: {passed} / {total} ({passedPercent}%)<br>
+            Total Failed: {failed} / {total} ({failedPercent}%)
+        </td>
+        <td>
+            Okapi Tests: {total}<br>
+            Okapi Passed: {okapiPassed} / {total} ({okapiPassedPercent}%)<br>
+            Okapi Failed: {okapiFailed} / {total} ({okapiFailedPercent}%)
+        </td>
+        <td>
+            Zint Tests: {total}<br>
+            Zint Passed: {zintPassed} / {total} ({zintPassedPercent}%)<br>
+            Zint Failed: {zintFailed} / {total} ({zintFailedPercent}%)
+        </td>
+        <td>
+            Okapi version {okapiVersion}<br>
+            Zint version {zintVersion}<br>
+            ZXing version {zxingVersion}<br>
+        </td>
+    </tr>
+</table>
+
+<table id="results">
+    <thead>
+        <tr>
+            <th>Test</th>
+            <th>Status</th>
+            <th>Barcode</th>
+            <th>Data</th>
+            <th>Okapi Encode Result</th>
+            <th>Okapi ZXing Decode Result</th>
+            <th>Zint Encode Result</th>
+            <th>Zint ZXing Decode Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        {rows}
+    </tbody>
+</table>
+
+<script src="tablefilter/tablefilter.js"></script>
+
+<script>
+    var okTexts = ['OK', 'Not OK'];
+    var okValues = ['OK', '!OK'];
+    var filtersConfig = {
+        base_path: 'tablefilter/',
+        col_1: 'select',
+        col_2: 'select',
+        col_4: 'select',
+        col_5: 'select',
+        col_6: 'select',
+        col_7: 'select',
+        clear_filter_text: '',
+        linked_filters: true,
+        alternate_rows: true,
+        mark_active_columns: true,
+        custom_options: {
+            cols: [4, 5, 6, 7],
+            texts: [okTexts, okTexts, okTexts, okTexts],
+            values: [okValues, okValues, okValues, okValues],
+            sorts: [false, false, false, false]
+        }
+    };
+    var tf = new TableFilter('results', filtersConfig);
+    tf.init();
+</script>
+
+</body>
+</html>

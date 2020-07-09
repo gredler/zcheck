@@ -1,0 +1,278 @@
+tests_per_pattern: 50
+
+barcodes:
+
+  - name: Code 11
+    disabled_because: ZXing cannot read these barcodes
+    zint_barcode: 1
+    okapi_class: uk.org.okapibarcode.backend.Code11
+    patterns:
+      - '[0-9\-]{1,20}'
+
+  - name: Code 2 of 5 (Standard)
+    disabled_because: ZXing cannot read these barcodes
+    zint_barcode: 2
+    okapi_class: uk.org.okapibarcode.backend.Code2Of5
+    okapi_mode: MATRIX
+    patterns:
+      - '[0-9]{1,20}'
+
+  - name: Code 2 of 5 (Interleaved)
+    disabled_because: ZXing cannot read these barcodes
+    zint_barcode: 3
+    okapi_class: uk.org.okapibarcode.backend.Code2Of5
+    okapi_mode: INTERLEAVED
+    patterns:
+      - '[0-9]{1,20}'
+
+  - name: Code 2 of 5 (IATA)
+    disabled_because: ZXing cannot read these barcodes
+    zint_barcode: 4
+    okapi_class: uk.org.okapibarcode.backend.Code2Of5
+    okapi_mode: IATA
+    patterns:
+      - '[0-9]{1,20}'
+
+  - name: Code 2 of 5 (Data Logic)
+    disabled_because: ZXing cannot read these barcodes
+    zint_barcode: 6
+    okapi_class: uk.org.okapibarcode.backend.Code2Of5
+    okapi_mode: DATA_LOGIC
+    patterns:
+      - '[0-9]{1,20}'
+
+  - name: Code 2 of 5 (Industrial)
+    disabled_because: ZXing cannot read these barcodes
+    zint_barcode: 7
+    okapi_class: uk.org.okapibarcode.backend.Code2Of5
+    okapi_mode: INDUSTRIAL
+    patterns:
+      - '[0-9]{1,20}'
+
+  - name: Code 3 of 9
+    zint_barcode: 8
+    okapi_class: uk.org.okapibarcode.backend.Code3Of9
+    patterns:
+      - '[0-9A-Z \-\.\$\+%/]{1,20}'
+
+  - name: Code 3 of 9 Extended
+    zint_barcode: 9
+    okapi_class: uk.org.okapibarcode.backend.Code3Of9Extended
+    patterns:
+      - '[\u0000-\u007F]{1,20}'
+
+  - name: Codabar
+    zint_barcode: 18
+    okapi_class: uk.org.okapibarcode.backend.Codabar
+    patterns:
+      - '[A-D][0-9\-$:/\.\+]{1,20}[A-D]'
+
+  - name: Code 128
+    zint_barcode: 20
+    okapi_class: uk.org.okapibarcode.backend.Code128
+    patterns:
+      - '[\u0000-\u00FF]{1,30}'
+
+  - name: Code 93
+    zint_barcode: 25
+    okapi_class: uk.org.okapibarcode.backend.Code93
+    patterns:
+      - '[\u0000-\u007F]{1,20}'
+
+  - name: GS1 DataBar Limited
+    disabled_because: ZXing cannot read these barcodes
+    zint_barcode: 30
+    okapi_class: uk.org.okapibarcode.backend.DataBarLimited
+    patterns:
+      - '[01]?[0-9]{12}'
+
+  - name: PDF417
+    zint_barcode: 55
+    okapi_class: uk.org.okapibarcode.backend.Pdf417
+    patterns:
+      - '[\u0000-\u00FF]{1,999}'
+
+  - name: MaxiCode (mode 2)
+    zint_barcode: 57
+    zint_mode: 2
+    zint_primary: 123456789123123
+    okapi_class: uk.org.okapibarcode.backend.MaxiCode
+    okapi_mode: 2
+    okapi_primary: 123456789123123
+    patterns:
+      - '[\u0000-\u00FF]{1,99}'
+
+  - name: MaxiCode (mode 3)
+    zint_barcode: 57
+    zint_mode: 3
+    zint_primary: ABCDEF000123123
+    okapi_class: uk.org.okapibarcode.backend.MaxiCode
+    okapi_mode: 3
+    okapi_primary: ABCDEF000123123
+    patterns:
+      - '[\u0000-\u00FF]{1,99}'
+
+  - name: MaxiCode (mode 4)
+    zint_barcode: 57
+    zint_mode: 4
+    okapi_class: uk.org.okapibarcode.backend.MaxiCode
+    okapi_mode: 4
+    patterns:
+      - '[\u0000-\u00FF]{1,99}'
+
+  - name: MaxiCode (mode 5)
+    zint_barcode: 57
+    zint_mode: 5
+    okapi_class: uk.org.okapibarcode.backend.MaxiCode
+    okapi_mode: 5
+    patterns:
+      - '[\u0000-\u00FF]{1,99}'
+
+  - name: MaxiCode (mode 6)
+    zint_barcode: 57
+    zint_mode: 6
+    okapi_class: uk.org.okapibarcode.backend.MaxiCode
+    okapi_mode: 6
+    patterns:
+      - '[\u0000-\u00FF]{1,99}'
+
+  - name: QR Code
+    zint_barcode: 58
+    okapi_class: uk.org.okapibarcode.backend.QrCode
+    patterns:
+      - '[\u0000-\u00FF]{1,999}'
+
+  - name: Data Matrix (ECC 200)
+    zint_barcode: 71
+    okapi_class: uk.org.okapibarcode.backend.DataMatrix
+    patterns:
+      - '[\u0000-\u00FF]{1,999}'
+
+  - name: GS1 DataBar Stacked
+    zint_barcode: 79
+    okapi_class: uk.org.okapibarcode.backend.DataBar14
+    okapi_mode: STACKED
+    patterns:
+      - '[0-9]{13}'
+
+  - name: GS1 DataBar Expanded Stacked (auto columns)
+    zint_barcode: 81
+    okapi_class: uk.org.okapibarcode.backend.DataBarExpanded
+    patterns:
+      - '\[01\]\d{14}'
+      - '\[21\][!"%-\?A-Z_a-z]{1,20}'
+      - '\[01\]\d{14}\[3202\]\d{6}\[15\]\d{6}\[3203\]\d{6}\[17\]\d{6}'
+
+  - name: GS1 DataBar Expanded Stacked (1 column)
+    zint_barcode: 81
+    zint_cols: 1
+    okapi_class: uk.org.okapibarcode.backend.DataBarExpanded
+    okapi_preferred_columns: 1
+    patterns:
+      - '\[01\]\d{14}'
+      - '\[21\][!"%-\?A-Z_a-z]{1,20}'
+      - '\[01\]\d{14}\[3202\]\d{6}\[15\]\d{6}\[3203\]\d{6}\[17\]\d{6}'
+
+  - name: GS1 DataBar Expanded Stacked (2 columns)
+    zint_barcode: 81
+    zint_cols: 2
+    okapi_class: uk.org.okapibarcode.backend.DataBarExpanded
+    okapi_preferred_columns: 2
+    patterns:
+      - '\[01\]\d{14}'
+      - '\[21\][!"%-\?A-Z_a-z]{1,20}'
+      - '\[01\]\d{14}\[3202\]\d{6}\[15\]\d{6}\[3203\]\d{6}\[17\]\d{6}'
+
+  - name: GS1 DataBar Expanded Stacked (3 columns)
+    zint_barcode: 81
+    zint_cols: 3
+    okapi_class: uk.org.okapibarcode.backend.DataBarExpanded
+    okapi_preferred_columns: 3
+    patterns:
+      - '\[01\]\d{14}'
+      - '\[21\][!"%-\?A-Z_a-z]{1,20}'
+      - '\[01\]\d{14}\[3202\]\d{6}\[15\]\d{6}\[3203\]\d{6}\[17\]\d{6}'
+
+  - name: GS1 DataBar Expanded Stacked (4 columns)
+    zint_barcode: 81
+    zint_cols: 4
+    okapi_class: uk.org.okapibarcode.backend.DataBarExpanded
+    okapi_preferred_columns: 4
+    patterns:
+      - '\[01\]\d{14}'
+      - '\[21\][!"%-\?A-Z_a-z]{1,20}'
+      - '\[01\]\d{14}\[3202\]\d{6}\[15\]\d{6}\[3203\]\d{6}\[17\]\d{6}'
+
+  - name: GS1 DataBar Expanded Stacked (5 columns)
+    zint_barcode: 81
+    zint_cols: 5
+    okapi_class: uk.org.okapibarcode.backend.DataBarExpanded
+    okapi_preferred_columns: 5
+    patterns:
+      - '\[01\]\d{14}'
+      - '\[21\][!"%-\?A-Z_a-z]{1,20}'
+      - '\[01\]\d{14}\[3202\]\d{6}\[15\]\d{6}\[3203\]\d{6}\[17\]\d{6}'
+
+  - name: GS1 DataBar Expanded Stacked (6 columns)
+    zint_barcode: 81
+    zint_cols: 6
+    okapi_class: uk.org.okapibarcode.backend.DataBarExpanded
+    okapi_preferred_columns: 6
+    patterns:
+      - '\[01\]\d{14}'
+      - '\[21\][!"%-\?A-Z_a-z]{1,20}'
+      - '\[01\]\d{14}\[3202\]\d{6}\[15\]\d{6}\[3203\]\d{6}\[17\]\d{6}'
+
+  - name: GS1 DataBar Expanded Stacked (7 columns)
+    zint_barcode: 81
+    zint_cols: 7
+    okapi_class: uk.org.okapibarcode.backend.DataBarExpanded
+    okapi_preferred_columns: 7
+    patterns:
+      - '\[01\]\d{14}'
+      - '\[21\][!"%-\?A-Z_a-z]{1,20}'
+      - '\[01\]\d{14}\[3202\]\d{6}\[15\]\d{6}\[3203\]\d{6}\[17\]\d{6}'
+
+  - name: GS1 DataBar Expanded Stacked (8 columns)
+    zint_barcode: 81
+    zint_cols: 8
+    okapi_class: uk.org.okapibarcode.backend.DataBarExpanded
+    okapi_preferred_columns: 8
+    patterns:
+      - '\[01\]\d{14}'
+      - '\[21\][!"%-\?A-Z_a-z]{1,20}'
+      - '\[01\]\d{14}\[3202\]\d{6}\[15\]\d{6}\[3203\]\d{6}\[17\]\d{6}'
+
+  - name: GS1 DataBar Expanded Stacked (9 columns)
+    zint_barcode: 81
+    zint_cols: 9
+    okapi_class: uk.org.okapibarcode.backend.DataBarExpanded
+    okapi_preferred_columns: 9
+    patterns:
+      - '\[01\]\d{14}'
+      - '\[21\][!"%-\?A-Z_a-z]{1,20}'
+      - '\[01\]\d{14}\[3202\]\d{6}\[15\]\d{6}\[3203\]\d{6}\[17\]\d{6}'
+
+  - name: GS1 DataBar Expanded Stacked (10 columns)
+    zint_barcode: 81
+    zint_cols: 10
+    okapi_class: uk.org.okapibarcode.backend.DataBarExpanded
+    okapi_preferred_columns: 10
+    patterns:
+      - '\[01\]\d{14}'
+      - '\[21\][!"%-\?A-Z_a-z]{1,20}'
+      - '\[01\]\d{14}\[3202\]\d{6}\[15\]\d{6}\[3203\]\d{6}\[17\]\d{6}'
+
+  - name: MicroPDF417
+    disabled_because: ZXing cannot read these barcodes
+    zint_barcode: 84
+    okapi_class: uk.org.okapibarcode.backend.Pdf417
+    okapi_mode: MICRO
+    patterns:
+      - '[\u0000-\u00FF]{1,50}'
+
+  - name: Aztec Code
+    zint_barcode: 92
+    okapi_class: uk.org.okapibarcode.backend.AztecCode
+    patterns:
+      - '[\u0000-\u00FF]{1,999}'
