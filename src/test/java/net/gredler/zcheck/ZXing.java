@@ -153,7 +153,7 @@ class ZXing {
             return data.substring(0, data.length() - 1);
         } else if (DataBarExpanded.class.getName().equals(clazz)) {
             // replace the parenthesis around the GS1 AIs with brackets
-            return data.replace('(', '[').replace(')', ']');
+            return data.replaceAll("\\((\\d{2,4})\\)", "[$1]");
         }
         // no massaging required
         return data;
