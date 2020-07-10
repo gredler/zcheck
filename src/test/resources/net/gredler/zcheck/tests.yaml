@@ -129,6 +129,7 @@ barcodes:
       - '[\u0000-\u00FF]{1,99}'
 
   - name: MaxiCode (mode 6)
+    disabled_because: ZXing cannot read these barcodes
     zint_barcode: 57
     zint_mode: 6
     okapi_class: uk.org.okapibarcode.backend.MaxiCode
