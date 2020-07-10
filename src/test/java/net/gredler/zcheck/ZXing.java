@@ -6,6 +6,7 @@ import java.io.UncheckedIOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.regex.Pattern;
 
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
@@ -102,6 +103,7 @@ class ZXing {
             // remove the start/stop characters from the specified barcode content
             return data.substring(1, data.length() - 1);
         } else if (MaxiCode.class.getName().equals(clazz)) {
+            // combine primary message and secondary message
             var primary = okapiConfig.get("okapi_primary");
             if (primary != null) {
                 var mode = (Integer) okapiConfig.get("okapi_mode");
@@ -112,9 +114,36 @@ class ZXing {
                        p.substring(12) + '\u001D' +
                        data;
             }
+        } else if (DataBarExpanded.class.getName().equals(clazz)) {
+            // some GS1 AI data fields contain check digits; we need to ensure that check digits
+            // for AIs 00, 01 and 02 are correct, since ZXing will correct them during decoding
+            // https://sourceforge.net/p/zint/mailman/message/37057530/
+            var pattern = Pattern.compile("\\[0[012]\\]\\d+");
+            var matcher = pattern.matcher(data);
+            if (matcher.find()) {
+                return data.substring(0, matcher.start()) +
+                       tweakGs1CheckDigit(matcher.group()) +
+                       data.substring(matcher.end());
+            }
         }
         // no massaging required
         return data;
+    }
+
+    private static String tweakGs1CheckDigit(String s) {
+        // expected input: "[0X]NNNNNNN...D", where X = 0/1/2, N = number, D = check digit
+        int sum = 0;
+        boolean three = true;
+        int end = s.lastIndexOf(']');
+        for (int i = s.length() - 2; i > end; i--) {
+            sum += (s.charAt(i) - '0') * (three ? 3 : 1);
+            three = !three;
+        }
+        int checkDigit = 10 - (sum % 10);
+        if (checkDigit == 10) {
+            checkDigit = 0;
+        }
+        return s.substring(0, s.length() - 1) + checkDigit;
     }
 
     private static String massageDecodedData(String data, Map< String, Object > okapiConfig) {
