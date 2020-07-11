@@ -1,7 +1,6 @@
 package net.gredler.zcheck;
 
 import java.awt.Color;
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -21,12 +20,12 @@ class Okapi {
             int width = symbol.getWidth() * magnification;
             int height = symbol.getHeight() * magnification;
 
-            BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
-            Graphics2D g2d = image.createGraphics();
+            var image = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
+            var g2d = image.createGraphics();
             g2d.setPaint(Color.WHITE);
             g2d.fillRect(0, 0, width, height);
 
-            Java2DRenderer renderer = new Java2DRenderer(g2d, magnification, Color.WHITE, Color.BLACK);
+            var renderer = new Java2DRenderer(g2d, magnification, Color.WHITE, Color.BLACK);
             renderer.render(symbol);
 
             g2d.dispose();

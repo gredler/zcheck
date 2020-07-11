@@ -107,7 +107,7 @@ class ZXing {
             var primary = okapiConfig.get("okapi_primary");
             if (primary != null) {
                 var mode = (Integer) okapiConfig.get("okapi_mode");
-                String p = primary.toString();
+                var p = primary.toString();
                 int postalCodeLength = (mode == 2 ? 9 : 6);
                 return p.substring(0, postalCodeLength) + '\u001D' +
                        p.substring(9, 12) + '\u001D' +
