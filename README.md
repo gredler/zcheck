@@ -11,15 +11,15 @@ Results are checked against [ZXing](https://github.com/zxing/zxing) for correctn
 Test results are summarized in an HTML report. Past test results are available in the [reports](reports) directory.
 
 ```
-                                             +---------+        +---------+
-                          +---------+        |  Okapi  |        |  ZXing  |
-    +------------+        |         | -----> |  encode | -----> |  decode |        +-------------+
-    |            |        |         |        +---------+        +---------+        |             |
-    | tests.yaml | -----> | Generex |                                       -----> | HTML report |
-    |            |        |         |        +---------+        +---------+        |             |
-    +------------+        |         | -----> |  Zint   | -----> |  ZXing  |        +-------------+
-                          +---------+        |  encode |        |  decode |
-                                             +---------+        +---------+
+                                        +---------+       +---------+
+                      +---------+       |  Okapi  |       |  ZXing  |
+ +------------+       |         | ----> |  encode | ----> |  decode |       +-------------+
+ |            |       |         |       +---------+       +---------+       |             |
+ | tests.yaml | ----> | Generex |                                     ----> | HTML report |
+ |            |       |         |       +---------+       +---------+       |             |
+ +------------+       |         | ----> |  Zint   | ----> |  ZXing  |       +-------------+
+                      +---------+       |  encode |       |  decode |
+                                        +---------+       +---------+
 ```
 
 ### Running
