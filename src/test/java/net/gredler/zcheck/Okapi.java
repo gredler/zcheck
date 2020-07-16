@@ -114,6 +114,7 @@ class Okapi {
     }
 
     public static String version() {
-        return Symbol.class.getPackage().getImplementationVersion();
+        String version = Symbol.class.getPackage().getImplementationVersion();
+        return version != null ? version : "snapshot";
     }
 }
